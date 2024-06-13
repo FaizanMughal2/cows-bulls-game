@@ -12,6 +12,8 @@ function generateRandomNumber() {
     console.log("Secret Number: ", secretNumber);  // For debugging purposes
 }
 
+generateRandomNumber();
+
 function checkGuess() {
     if (gameWon) return;
 
@@ -99,4 +101,4 @@ function resetGame() {
     generateRandomNumber();
 }
 
-generateRandomNumber();
+
