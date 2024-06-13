@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cows and Bulls Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cows and Bulls Game</h1>
+        <div class="row">
+            <div class="box hidden" id="num1"></div>
+            <div class="box hidden" id="num2"></div>
+            <div class="box hidden" id="num3"></div>
+            <div class="box hidden" id="num4"></div>
+        </div>
+        <div class="row">
+            <input type="text" maxlength="1" class="guess-box" id="guess1">
+            <input type="text" maxlength="1" class="guess-box" id="guess2">
+            <input type="text" maxlength="1" class="guess-box" id="guess3">
+            <input type="text" maxlength="1" class="guess-box" id="guess4">
+        </div>
+    
+        <div class="guesses-container" id="guesses-container"></div>
+        <button onclick="checkGuess()">Check</button>
+            <button onclick="giveUp()">Give Up</button>
+            <button onclick="resetGame()">Reset Game</button>
+
+        <button id="new-game" onclick="resetGame()" style="display:none;">New Game</button>
+    </div>
+<script src="main.js"></script>
+  </body>
+</html>
