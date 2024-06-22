@@ -9,10 +9,8 @@ function generateRandomNumber() {
             secretNumber.push(digit);
         }
     }
-    console.log("Secret Number: ", secretNumber);  // For debugging purposes
+    console.log("Secret Number: ", secretNumber.join(''));  // For debugging purposes
 }
-
-generateRandomNumber();
 
 function checkGuess() {
     if (gameWon) return;
@@ -23,6 +21,12 @@ function checkGuess() {
         document.getElementById('guess3').value,
         document.getElementById('guess4').value
     ];
+
+    // Check if all input fields are filled
+    if (guess.includes('')) {
+        alert("Please enter a guess in all fields.");
+        return;
+    }
 
     let bulls = 0;
     let cows = 0;
@@ -54,6 +58,15 @@ function giveUp() {
     document.getElementById('num2').classList.remove('hidden');
     document.getElementById('num3').classList.remove('hidden');
     document.getElementById('num4').classList.remove('hidden');
+
+    // Disable input fields
+    document.getElementById('guess1').disabled = true;
+    document.getElementById('guess2').disabled = true;
+    document.getElementById('guess3').disabled = true;
+    document.getElementById('guess4').disabled = true;
+
+    // Show New Game button
+    document.getElementById('new-game').style.display = 'block';
 }
 
 function displayGuess(guess, bulls, cows) {
@@ -98,7 +111,30 @@ function resetGame() {
     document.getElementById('num4').innerText = '';
     document.getElementById('guesses-container').innerHTML = '';
     document.getElementById('new-game').style.display = 'none';
+    document.getElementById('guess1').disabled = false;
+    document.getElementById('guess2').disabled = false;
+    document.getElementById('guess3').disabled = false;
+    document.getElementById('guess4').disabled = false;
     generateRandomNumber();
 }
 
+function moveFocus(boxNumber) {
+    if (document.getElementById(`guess${boxNumber}`).value.length === 1) {
+        if (boxNumber < 4) {
+            document.getElementById(`guess${boxNumber + 1}`).focus();
+        }
+    }
+}
 
+function enterDigit(digit) {
+    for (let i = 1; i <= 4; i++) {
+        let guessBox = document.getElementById(`guess${i}`);
+        if (guessBox.value === '') {
+            guessBox.value = digit;
+            moveFocus(i);
+            break;
+        }
+    }
+}
+
+generateRandomNumber();

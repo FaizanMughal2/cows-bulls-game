@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cows and Bulls Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <h1>Cows and Bulls Game</h1>
+        <h1>Bulls & Cows</h1>
+        <p>
+            Discover the hidden code!<br>
+            Use arrow keys or enter Manually to change your guess in each box.<br>
+            Bulls = correct code, correct position.<br>
+            Cows = correct code, wrong position.<br>
+
+
+        </p>
         <div class="row">
             <div class="box hidden" id="num1"></div>
             <div class="box hidden" id="num2"></div>
@@ -16,19 +26,35 @@
             <div class="box hidden" id="num4"></div>
         </div>
         <div class="row">
-            <input type="text" maxlength="1" class="guess-box" id="guess1">
-            <input type="text" maxlength="1" class="guess-box" id="guess2">
-            <input type="text" maxlength="1" class="guess-box" id="guess3">
-            <input type="text" maxlength="1" class="guess-box" id="guess4">
+            <input type="text" maxlength="1" class="guess-box" id="guess1" oninput="moveFocus(1)">
+            <input type="text" maxlength="1" class="guess-box" id="guess2" oninput="moveFocus(2)">
+            <input type="text" maxlength="1" class="guess-box" id="guess3" oninput="moveFocus(3)">
+            <input type="text" maxlength="1" class="guess-box" id="guess4" oninput="moveFocus(4)">
         </div>
-    
-        <div class="guesses-container" id="guesses-container"></div>
-        <button onclick="checkGuess()">Check</button>
+        <div class="number-pad">
+            <button onclick="enterDigit(0)">0</button>
+            <button onclick="enterDigit(1)">1</button>
+            <button onclick="enterDigit(2)">2</button>
+            <button onclick="enterDigit(3)">3</button>
+            <button onclick="enterDigit(4)">4</button>
+            <button onclick="enterDigit(5)">5</button>
+            <button onclick="enterDigit(6)">6</button>
+            <button onclick="enterDigit(7)">7</button>
+            <button onclick="enterDigit(8)">8</button>
+            <button onclick="enterDigit(9)">9</button>
+        </div>
+        <div class="guesses-container" id="guesses-container">
+            <h2>Results</h2>
+        </div>
+
+        <div class="btn">
+            <button onclick="checkGuess()">Check</button>
             <button onclick="giveUp()">Give Up</button>
             <button onclick="resetGame()">Reset Game</button>
-
-        <button id="new-game" onclick="resetGame()" style="display:none;">New Game</button>
+            <button id="new-game" onclick="resetGame()" style="display:none;">New Game</button>
+        </div>
     </div>
-<script src="main.js"></script>
-  </body>
+    <script src="main.js"></script>
+</body>
+
 </html>
